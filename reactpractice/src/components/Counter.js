@@ -2,9 +2,13 @@ import React from "react";
 
 // By extending the React.Component class, Counter inherits functionality from it
 class Counter extends React.Component {
+
+  constructor(...props){
+    super(...props);
+  }
   // Setting the initial state of the Counter component
   state = {
-    score: 0
+    score: this.props.score
   };
 
   // handleIncrement increments this.state.count by 1
