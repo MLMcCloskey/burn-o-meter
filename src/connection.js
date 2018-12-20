@@ -15,12 +15,12 @@ connection = mysql.createConnection({
 }
 
 
-connection.connect(function(err){
-    if (err) {
-        console.error("Error connecting: " + err.stack);
-        return;
-    }
-    console.log("Connected as id "+ connection.threadID);
-});
+// connection.connect(function(err){
+//     if (err) {
+//         console.error("Error connecting: " + err.stack);
+//         return;
+//     }
+//     console.log("Connected as id "+ connection.threadID);
+// });
 
 module.exports = connection;

@@ -1,13 +1,15 @@
-DROP DATABASE IF EXISTS burners_DB;
-CREATE database burners_DB;
+DROP DATABASE IF EXISTS burners_db;
+CREATE database burners_db;
 
-Use burners_DB;
+Use burners_db;
 
 CREATE TABLE players (
     pname VARCHAR(100) NULL, 
     score INT NOT NULL,
-    id INT NOT NULL,
+    id  INT NOT NULL AUTO_INCREMENT,
     Primary Key (id)
 );
 
-SELECT * FROM burners_DB;
+INSERT INTO players (pname, score) VALUES ("McDoobie", 0), ("Bruder", 0), ("Garland", 0), ("Andrea", 0), ("J Guevara", 0);
+
+SELECT * FROM players;

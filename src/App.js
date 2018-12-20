@@ -5,6 +5,7 @@ import './App.css';
 import Header from './components/Header';
 import Player from './components/Player';
 import Counter from './components/Counter';
+import API from './utils/API';
 
 const PLAYERS = [
 	{
@@ -39,6 +40,44 @@ class App extends React.Component {
   constructor(...props) {
     super(...props);
   } 
+
+  state = {
+    burners: []
+  };
+
+  loadBurners = () => {
+    API.getBurners()
+      .then( res => {
+      console.log(`this is the response: ${res}`);
+      this.setState({
+        burners: res.data
+      })
+      console.log(`this is the state: ${this.state.burners}`);
+    }).catch(err => console.log(err));
+  }
+
+  increment = burner => {
+    console.log(burner);
+    API.increment({id: burner.id}).then(res => {
+      console.log("INCINERATION");
+      // this.setState({})
+      this.loadBurners()
+    }).catch(err => console.log(err));
+  }
+
+  decrement = burner => {
+    console.log(burner);
+    API.decrement({id: burner.id}).then(res => {
+      console.log("INCINERATION");
+      // this.setState({})
+      this.loadBurners()
+    }).catch(err => console.log(err));
+  }
+
+  componentDidMount(){
+    this.loadBurners();
+  }
+
     render() {
       return (
         <div className="scoreboard">
@@ -46,8 +85,9 @@ class App extends React.Component {
         <Header title={this.props.title}/>
       
         <div className="players">
-          {this.props.players.map(function(player){
-            return <Player name={player.name} score={player.score} key={player.id} />
+          {/* {this.props.players.map(function(player){ */}
+          {this.state.burners.map(function(player){
+            return <Player name={player.pname} score={player.score} key={player.id} />
           })}
           {/* <Player {...props.Player}/> */}
         </div>
