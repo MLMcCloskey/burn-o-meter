@@ -56,7 +56,6 @@ connection.connect(function(err){
   console.log("Connected as id "+ connection.threadId);
   connection.query("SELECT * from players", function(err, res){
     if (err) console.log(err);
-    console.log(JSON.stringify(res));
 
   })
 });
