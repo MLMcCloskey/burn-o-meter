@@ -1,39 +1,10 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
 // import JSXVariables from "./components/JSXVariables";
 import Header from './components/Header';
 import Player from './components/Player';
-import Counter from './components/Counter';
+// import Counter from './components/Counter';
 import API from './utils/API';
-
-const PLAYERS = [
-	{
-		name: "Ratthew",
-		score: 420,
-		id: 1,
-	},
-	{
-		name: "Garland",
-		score: 69,
-		id: 2,
-	},
-	{
-		name: "Andrea",
-		score: 100,
-		id: 3,
-  },
-  {
-		name: "Bruder",
-		score: 100,
-    id: 4,
-  },
-  {
-		name: "J Guevara",
-		score: 100,
-    id: 5,
-  }
-];
 
 
 class App extends React.Component {
@@ -48,11 +19,9 @@ class App extends React.Component {
   loadBurners = () => {
     API.getBurners()
       .then( res => {
-      console.log(`this is the response: ${res}`);
       this.setState({
         burners: res.data
       })
-      console.log(`this is the state: ${this.state.burners}`);
     }).catch(err => console.log(err));
   }
 
@@ -85,11 +54,9 @@ class App extends React.Component {
         <Header title={this.props.title}/>
       
         <div className="players">
-          {/* {this.props.players.map(function(player){ */}
           {this.state.burners.map(function(player){
             return <Player name={player.pname} score={player.score} id={player.id} key={player.id}/>
           })}
-          {/* <Player {...props.Player}/> */}
         </div>
       </div>
     );

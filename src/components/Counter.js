@@ -12,29 +12,17 @@ class Counter extends React.Component {
     score: this.props.score
   };
 
-  // handleIncrement increments this.state.count by 1
-  handleIncrement = () => {
-    // We always use the setState method to update a component's state
-    this.setState({ score: this.state.score + 1 });
-  };
-
-  handleDecrement = () => {
-      this.setState({ score: this.state.score - 1});
-  }
 
   increment = player => {
-    console.log(player);
     API.increment({id: this.props.id}).then(res => {
-      console.log("INCINERATION");
       this.setState({ score: this.state.score +1 });
       // this.loadBurners()
     }).catch(err => console.log(err));
   }
 
   decrement = player => {
-    console.log(player);
+    console.log(this.props);
     API.decrement({id: this.props.id}).then(res => {
-      console.log("INCINERATION");
       this.setState({ score: this.state.score -1})
       // this.loadBurners()
     }).catch(err => console.log(err));
@@ -44,9 +32,6 @@ class Counter extends React.Component {
   render() {
     return (
       <div className="text-center">
-        {/* <div className="card-header bg-primary text-white">
-          <h3 className="card-title"></h3>
-        </div> */}
         <div className="card-body text-center">
           <button className="btn btn-success buttn" style={{width: "50px"}} onClick={this.increment}>
             +
