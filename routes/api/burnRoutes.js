@@ -52,11 +52,11 @@ const burnController = require("../../controllers/burnController");
         .get(burnController.loadBurners)
         .post(burnController.loadBurners);
 
-    // router.route("/burn")
-    //     .put(burnController.burn);
+    router.route("/burn")
+        .put(burnController.burn);
 
-    // router.route("/stank")
-    //     .put(burnController.stank);
+    router.route("/stank")
+        .put(burnController.stank);
 
 
     module.exports = router;

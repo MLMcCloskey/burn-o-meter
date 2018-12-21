@@ -9,7 +9,7 @@ function Player(props) {
             </div>
 
             <div className="player-score">
-                <Counter score={props.score} />
+                <Counter score={props.score} id={props.id} increment={props.increment}/>
             </div>
         </div>
     );

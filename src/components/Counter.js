@@ -1,4 +1,5 @@
 import React from "react";
+import API from '../utils/API';
 
 // By extending the React.Component class, Counter inherits functionality from it
 class Counter extends React.Component {
@@ -21,6 +22,24 @@ class Counter extends React.Component {
       this.setState({ score: this.state.score - 1});
   }
 
+  increment = player => {
+    console.log(player);
+    API.increment({id: this.props.id}).then(res => {
+      console.log("INCINERATION");
+      this.setState({ score: this.state.score +1 });
+      // this.loadBurners()
+    }).catch(err => console.log(err));
+  }
+
+  decrement = player => {
+    console.log(player);
+    API.decrement({id: this.props.id}).then(res => {
+      console.log("INCINERATION");
+      this.setState({ score: this.state.score -1})
+      // this.loadBurners()
+    }).catch(err => console.log(err));
+  }
+
   // The render method returns the JSX that should be rendered
   render() {
     return (
@@ -29,11 +48,11 @@ class Counter extends React.Component {
           <h3 className="card-title"></h3>
         </div> */}
         <div className="card-body text-center">
-          <button className="btn btn-success buttn" style={{width: "50px"}} onClick={this.handleIncrement}>
+          <button className="btn btn-success buttn" style={{width: "50px"}} onClick={this.increment}>
             +
           </button>
           <span className="text-center"> {this.state.score}</span>
-          <button className="btn btn-danger buttn" style={{width: "50px"}} onClick={this.handleDecrement}>
+          <button className="btn btn-danger buttn" style={{width: "50px"}} onClick={this.decrement}>
             -
           </button>
         </div>

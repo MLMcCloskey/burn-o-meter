@@ -56,18 +56,18 @@ class App extends React.Component {
     }).catch(err => console.log(err));
   }
 
-  increment = burner => {
-    console.log(burner);
-    API.increment({id: burner.id}).then(res => {
+  increment = player => {
+    console.log(player);
+    API.increment({id: player.id}).then(res => {
       console.log("INCINERATION");
       // this.setState({})
       this.loadBurners()
     }).catch(err => console.log(err));
   }
 
-  decrement = burner => {
-    console.log(burner);
-    API.decrement({id: burner.id}).then(res => {
+  decrement = player => {
+    console.log(player);
+    API.decrement({id: player.id}).then(res => {
       console.log("INCINERATION");
       // this.setState({})
       this.loadBurners()
@@ -87,7 +87,7 @@ class App extends React.Component {
         <div className="players">
           {/* {this.props.players.map(function(player){ */}
           {this.state.burners.map(function(player){
-            return <Player name={player.pname} score={player.score} key={player.id} />
+            return <Player name={player.pname} score={player.score} id={player.id} key={player.id}/>
           })}
           {/* <Player {...props.Player}/> */}
         </div>

@@ -15,6 +15,7 @@ export default {
 
     increment: data => {
         console.log("burnnnnnnnn");
+        console.log(data);
         return axios.put("/api/burnRoutes/burn", data);
     },
 
