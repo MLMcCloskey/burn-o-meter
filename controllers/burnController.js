@@ -10,17 +10,6 @@ module.exports = {
                         if (error) throw error;
                         return res.json(results);
                     });
-        // connection.connect(function (err) {
-        //     if (err) {
-        //         console.error("Error connecting: " + err.stack);
-        //         return;
-        //     } else {
-        //         connection.query('SELECT * from players', function (error, results) {
-        //             if (error) throw error;
-        //             res.send(JSON.stringify(results));
-        //         });
-        //     }
-        // });
     },
     burn: (req, res) => {
         console.log(req.body.id);
